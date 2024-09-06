@@ -1,0 +1,108 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "monospace";
+  font-size: 12px;
+  /* Increased font size */
+  min-height: 0;
+  margin: 0px;
+}
+
+window#waybar {
+  background: rgba(30, 30, 30, 0.7);
+  /* Darker background for contrast */
+  color: #ffffff;
+}
+
+#window {
+  color: #b2f9fc;
+  /* Light teal for text */
+  font-weight: bold;
+}
+
+#workspaces {
+  padding: 2px;
+  /* Increased padding */
+  margin: 2px;
+  /* Increased margin */
+}
+
+#workspaces button {
+  padding: 2px 4px;
+  /* Increased padding */
+  margin: 2px;
+  /* Increased margin */
+  background: transparent;
+  color: #00bfff;
+  /* Teal for workspace buttons */
+  border: 1px solid #1b1d1e;
+  font-weight: bold;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#workspaces button.focused {
+  background: #00bfff;
+  /* Teal for focused workspace */
+  color: #1b1d1e;
+}
+
+#workspaces button.urgent {
+  background: #ff69b4;
+  /* Pink for urgent workspace */
+  color: #1b1d1e;
+}
+
+#mode {
+  background: #ff69b4;
+  /* Pink for mode */
+  color: #1b1d1e;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode {
+  padding: 2px 6px;
+  /* Increased padding */
+  margin: 2px 4px;
+  /* Increased margin */
+}
+
+#battery icon {
+  color: #00bfff;
+  /* Teal for battery icon */
+}
+
+#battery.warning:not(.charging) {
+  background-color: #ff69b4;
+  /* Pink for warning */
+  color: #1b1d1e;
+}
+
+#battery.critical:not(.charging) {
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network.disconnected {
+  background: #ff69b4;
+  /* Pink for disconnected network */
+}
+
+#custom-spotify {
+  color: #00e8ff;
+  /* Bright teal for Spotify */
+}

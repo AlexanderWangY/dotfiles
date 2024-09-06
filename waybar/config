@@ -1,0 +1,146 @@
+{
+	// "layer": "top", // Waybar at top layer
+	// "position": "bottom", // Waybar position (top|bottom|left|right)
+	// "height": 14, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+
+	// Choose the order of the modules
+	"modules-left": ["sway/workspaces", "sway/mode"],
+	// "modules-center": ["sway/window"],
+	"modules-right": ["custom/arch_update", "custom/disk_home", "custom/disk_root","temperature", "cpu", "memory", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", "idle_inhibitor", "tray"],
+
+	// Modules configuration
+	// "sway/workspaces": {
+	// 	"disable-scroll": true,
+	// 	"all-outputs": true,
+	// 	"format": "{name}: {icon}",
+	// 	"format-icons": {
+	// 		"1": "",
+	// 		"2": "",
+	// 		"3": "",
+	// 		"4": "",
+	// 		"5": "",
+	// 		"urgent": "",
+	// 		"focused": "",
+	// 		"default": ""
+	// 	}
+	// },
+	"sway/mode": {
+		"format": "{}"
+	},
+	"custom/disk_root": {
+		"format": "\uf0c7 {} ",
+		"interval": 30,
+		"exec": "df -h --output=avail / | tail -1 | tr -d ' '"
+	},
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 80,
+		// "format-critical": "{temperatureC}°C {icon}",
+		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
+		"format-icons": ["\uf2cb", "\uf2c9", "\uf2c7"]
+	},
+	"cpu": {
+		"format": "\uf2db {usage}%",
+		"tooltip": false
+	},
+	"memory": {
+		"format": "\uf538 {used:0.1f}G"
+	},
+	"network": {
+		"family": "ipv4",
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "<span color='#589df6'>📶</span> <span color='gray'>{essid}</span> {frequency} <span color='#589df6'>{signaldBm} dB</span> <span color='#589df6'>⇵</span> {bandwidthUpBits}/{bandwidthDownBits}",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected \uf127",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"interval": 5
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "{icon} {volume}% {format_source}",
+		"format-muted": "Muted {format_source}",
+
+		"format-icons": {
+			"headphones": "\uf025",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["\uf026", "\uf027", "\uf028"]
+		},
+		"on-click": "ponymix -N -t sink toggle",
+		"on-click-right": "ponymix -N -t source toggle"
+	},
+	"clock": {
+		"interval": 1,
+		"format": " {:%H:%M:%S}",
+		"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+	},
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "<span color='#e88939'>{icon}</span> {capacity}% ({time})",
+		"format-charging": "<span color='#e88939'>⚡</span> {capacity}%",
+		"format-plugged":  "<span color='#e88939'>{icon}⚡</span> {capacity}% ({time})",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": ["", "", "", ""]
+	},
+	"battery#bat2": {
+		"bat": "BAT2"
+	},
+	"idle_inhibitor": {
+		"format": "<span color='#589df6'>{icon}</span>",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"on-click-right": "swaylock -eFfki ~/.config/lockscreen-origin.png"
+	},
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    }
+}

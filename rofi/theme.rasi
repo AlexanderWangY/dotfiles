@@ -1,0 +1,92 @@
+configuration {
+    modi: "run,drun,window";
+    width: 30;
+    lines: 10;
+    columns: 1;
+    font: "DejaVu Sans Mono 12";
+    bw: 1;
+    location: 0;
+    padding: 5;
+    fixed-num-lines: true;
+    show-icons: true;
+    terminal: "gnome-terminal";
+    ssh-client: "ssh";
+    ssh-command: "{terminal} -e {ssh-client} {host}";
+}
+
+* {
+    miku-teal: #39c5bb;
+    miku-dark-teal: #2ba59f;
+    miku-gray: #5d5d5d;
+    miku-light-gray: #b4b4b4;
+    miku-black: #1a1a1a;
+    
+    background-color: @miku-black;
+    border-color: @miku-teal;
+    text-color: #fff;
+    spacing: 0;
+}
+
+window {
+    width: 40%;
+    transparency: "real";
+    border: 2px;
+    border-color: @miku-teal;
+}
+
+mainbox {
+    padding: 0;
+    border: 0;
+}
+
+inputbar {
+    border: 0 0 2px 0;
+    children: [prompt,entry];
+    background-color: @miku-gray;
+}
+
+
+prompt {
+    padding: 16px;
+    border: 0 1px 0 0;
+    background-color: @miku-teal;
+    color: @miku-black;
+}
+
+textbox {
+    background-color: @miku-dark-teal;
+    border: 0 0 1px 0;
+    border-color: @miku-teal;
+    padding: 8px 16px;
+}
+
+entry {
+    padding: 16px;
+    color: @miku-black;
+}
+
+listview {
+    cycle: false;
+    margin: 0 0 -1px 0;
+    scrollbar: false;
+}
+
+element {
+    border: 0 0 1px 0;
+    padding: 16px;
+}
+
+element selected {
+    background-color: @miku-teal;
+    text-color: @miku-black;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element-icon {
+    background-color: inherit;
+    margin: 0 10px 0 0;
+}
