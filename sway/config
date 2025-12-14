@@ -78,7 +78,7 @@ output * bg ./backgrounds/HatsuneMikuGuitar.png fill
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -164,7 +164,7 @@ output * bg ./backgrounds/HatsuneMikuGuitar.png fill
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent

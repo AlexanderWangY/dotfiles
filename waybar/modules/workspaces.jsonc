@@ -1,0 +1,34 @@
+{
+  "sway/workspaces": {
+    // Show workspaces from all outputs on every bar
+    "all-outputs": true,
+
+    // Format: show only icon (not name)
+    "format": "{icon}",
+
+    // Icons depending on workspace state or name
+    "format-icons": {
+      // Map named or numbered workspaces explicitly (optional)
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    },
+
+    // Keep workspaces even if empty
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+
+    // Allow scroll & click to change workspaces
+    "disable-scroll": false,
+    "disable-click": false,
+    "enable-bar-scroll": true,
+
+    // Sorting workspaces by number if numbered
+    "numeric-first": true
+  }
+}
